@@ -2,16 +2,15 @@
 // Telegram Carousel Bot — collects up to 6 photos with captions, posts interactive carousel to channel
 
 require('dotenv').config();
-const express = require('express');
 const { Telegraf, Markup, session } = require('telegraf');
 const express = require('express');
-
 
 const bot = new Telegraf(process.env.BOT_TOKEN, { handlerTimeout: 9000 });
 const CHANNEL_ID = process.env.CHANNEL_ID; // e.g., -1001234567890
 const MAX_SLIDES = 6;
 
 const carouselStore = new Map();
+
 
 // --- Helpers ---------------------------------------------------------------
 const ensureSession = (ctx) => {
